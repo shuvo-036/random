@@ -1,17 +1,11 @@
-
-
-
 import React, { useState, useEffect } from 'react';
+import './shuvo.css';
+
 
 export default function Shuvo() {
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(count + 1);
-  };
-
-  const API_URL = ""; // Correct endpoint for weatherapi.com
-  const API_KEY = ""; // Your API key
-  const CITY = "Kolkata"; // City name for weather data
+  const API_URL = ""; 
+  const API_KEY = ""; 
+  const CITY = "Kolkata"; 
 
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
@@ -20,7 +14,7 @@ export default function Shuvo() {
     const fetchWeather = async () => {
       try {
         const response = await fetch(
-          `${API_URL}?key=${API_KEY}&q=${CITY}` // Proper template string syntax and parameters
+          `${API_URL}?key=${API_KEY}&q=${CITY}`
         );
 
         if (!response.ok) {
@@ -39,10 +33,8 @@ export default function Shuvo() {
 
   return (
     <div className="App">
-      
-      <button onClick={handleClick}>Click Me</button>
-      <p>Count: {count}</p>
       {error && <p>Error: {error}</p>}
+      {!weather && !error && <p>Loading weather data...</p>}
       {weather && (
         <div>
           <h2>Weather in {weather.location.name}</h2>
@@ -53,4 +45,3 @@ export default function Shuvo() {
     </div>
   );
 }
-

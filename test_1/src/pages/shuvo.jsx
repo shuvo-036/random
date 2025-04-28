@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './shuvo.css';
 
 export default function Shuvo() {
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(count + 1);
-  };
+
 
   const API_URL = "https://api.weatherapi.com/v1/current.json"; 
   const API_KEY = "your_real_api_key_here"; // Put your real API key here
@@ -37,8 +34,7 @@ export default function Shuvo() {
 
   return (
     <div className="App">
-      <button onClick={handleClick}>Click Me</button>
-      <p>Count: {count}</p>
+    
 
       {error && <p>Error: {error}</p>}
       {!weather && !error && <p>Loading weather data...</p>}
